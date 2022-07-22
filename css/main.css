@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.simulador {
+  text-align: center;
+  padding: 1em;
+}
+.simulador div {
+  padding: 0.5em;
+}
+.simulador div input {
+  padding-left: 1em;
+  width: 20vw;
+}/*# sourceMappingURL=main.css.map */

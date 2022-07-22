@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt ">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juros compostos</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <fieldset class="simulador">Simulador
+        <form action="">
+
+            <div>
+                <label for="name">Nome</label>
+                <input  type="text" name="name" id="name">
+            </div>
+    
+            <div> Aportes Mensais:
+                <label for="payment"></label>
+                <input type="number" name="payment" id="payment" placeholder="R$ 00,00">
+            </div>
+    
+            <div> 
+                <label for="time">Quanto tempo o valor ficará aplicado?</label>
+                <input type="number" name="timeValue" id="time" >
+            </div>
+    
+            <div>
+                <input type="radio" name="time" id="time" value="months">Meses
+                <input type="radio" name="time" id="time" value="years">Anos
+            </div>
+            <div class="btn">
+                <button id="simulate" type="submit">Simular</button>
+            </div>
+
+        </form>
+
+    </fieldset>
+    <script src="js/main.js"></script>
+</body>
+</html>
