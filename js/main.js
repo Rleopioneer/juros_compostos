@@ -54,27 +54,24 @@ form.onsubmit = function (e){
     let btn = document.forms['form']['btn']
     console.log(btn)
 
-    const toJson = res => res.json()
-
-    const errorHandling = () => console.log("Erro")
-
-    const options = {
-        method: 'POST',
-        headers: {
-            "content-type": "application/json",
-            "Access-Control-Allow-Headers": "Accept",
-            "Access-Control-Allow-Origin": "http://127.0.0.1:5500/",
-            "Access-Control-Allow-Methods": "POST",
-            "Access-Control-Allow-Headers": "*",
-            "Access-Control-Max-Age": 86400,
-        },
-        body: {
-            "expr": [`${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)`],
-            "precision": 2
-        }
+    const toJson = (res) => {
+        const result = res.json()
+        console.log(result)
+    
     }
 
-    fetch('http://api.mathjs.org/v4/', options).then(toJson).catch(errorHandling)
+    const errorHandling = error => console.log(error)
+
+    const config = {
+        headers: {
+            "content-type": "application/json"
+        },
+        method: "POST",
+        body: `{"expr": "${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)" }`
+        
+    }
+
+    fetch('http://api.mathjs.org/v4/', config).then(toJson).catch(errorHandling)
 
     if (!hasError) {
         form.submit()
