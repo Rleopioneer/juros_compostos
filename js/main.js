@@ -25,19 +25,9 @@ Exemplo:
 
 Olá [nome], investindo R$[mensalidade] todo mês, você terá R$[resultado da request] em [tempo] sob uma taxa de juros de [taxa] ao mês. */
 
-console.log("Hello World")
-
 const form = document.querySelector('#form')
-const name = document.querySelector('#name')
-const payment = document.querySelector('#payment')
-const timeValue = document.querySelector('#timeValue')
-const radio = document.querySelectorAll('#time')
-const btn = document.querySelector('#btn')
 const firstScreen = document.querySelector('.firstScreen')
 const secondScreen = document.querySelector('.secondScreen')
-
-console.log(secondScreen)
-
 
 
 form.onsubmit = function (e){
@@ -48,19 +38,43 @@ form.onsubmit = function (e){
     let hasError = true
 
     let inputName = document.forms['form']['name']
-    console.log(inputName)
+    console.log(inputName.value)
 
     let inputPayment = document.forms['form']['payment']
-    console.log(inputPayment)
+    console.log(inputPayment.value)
 
     let inputTimeValue = document.forms['form']['timeValue']
-    console.log(inputTimeValue)
+    console.log(inputTimeValue.value)
 
     let radio = document.forms['form']['radio']
-    console.log(radio)
+    console.log(radio.value)
+
+    console.log(`Olá ${inputName.value}! Aplicando o valor de R$${inputPayment.value}  com a taxa de juros compostos de XXXX% você terá o valor acumulado ao final de ${inputTimeValue.value} ${radio.value}: R$${inputPayment.value*inputTimeValue.value}`)
 
     let btn = document.forms['form']['btn']
     console.log(btn)
+
+    const toJson = res => res.json()
+
+    const errorHandling = () => console.log("Erro")
+
+    const options = {
+        method: 'POST',
+        headers: {
+            "content-type": "application/json",
+            "Access-Control-Allow-Headers": "Accept",
+            "Access-Control-Allow-Origin": "http://127.0.0.1:5500/",
+            "Access-Control-Allow-Methods": "POST",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Max-Age": 86400,
+        },
+        body: {
+            "expr": [`${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)`],
+            "precision": 2
+        }
+    }
+
+    fetch('http://api.mathjs.org/v4/', options).then(toJson).catch(errorHandling)
 
     if (!hasError) {
         form.submit()
