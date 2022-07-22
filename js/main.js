@@ -49,36 +49,38 @@ form.onsubmit = function (e){
     let radio = document.forms['form']['radio']
     console.log(radio.value)
 
-    console.log(`Olá ${inputName.value}! Aplicando o valor de R$${inputPayment.value}  com a taxa de juros compostos de XXXX% você terá o valor acumulado ao final de ${inputTimeValue.value} ${radio.value}: R$${inputPayment.value*inputTimeValue.value}`)
-
     let btn = document.forms['form']['btn']
-    console.log(btn)
-
-    const toJson = (res) => {
-        const result = res.json()
-        console.log(result)
+   
+    const expr =  `{"expr": "${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)"}`
+    console.log(expr)
     
-    }
-
-    const errorHandling = error => console.log(error)
-
     const config = {
         headers: {
             "content-type": "application/json"
         },
         method: "POST",
-        body: `{"expr": "${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)" }`
+        body: expr,
         
     }
+    
+    const toJson = (res) => {
+        return res.json()
+            
+    }
+    const data = (res) => {
+        console.log(res.result)
+    }
 
-    fetch('http://api.mathjs.org/v4/', config).then(toJson).catch(errorHandling)
+    const errorHandling = error => console.log(error)
 
+    fetch('http://api.mathjs.org/v4/', config).then(toJson).then(data).catch(errorHandling)
+
+    
     if (!hasError) {
+
         form.submit()
 
     }
-
-    
 
 }
 
