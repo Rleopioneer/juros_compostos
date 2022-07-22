@@ -4,20 +4,79 @@
     box-sizing: border-box;
 }
 
+$primary-color: #de3f53;
+$secondary-color: rgb(1, 0, 24);
+
 body {
-    background-color: #000;
+    background-color: $secondary-color;
     color: #fff;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.simulador {
-    text-align: center;
-    padding: 1em;
-    div {
-        padding: 0.5em;
+.firstScreen {
+    margin: 1em;
+    
 
-        input {
-            padding-left: 1em;
-            width: 20vw;
+    fieldset {
+        text-align: center;
+        padding: 1em; 
+        border-radius: 10px;
+        
+        h1 {
+            color: $primary-color; 
         }
+
+        div {
+            padding: 0.5em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        
+            input {
+                margin-top: 1em;
+                padding-left: 1em;
+                width: 35vw;
+                height: 5vh;
+
+            }
+
+
+        }
+
+        .radio {
+            display: flex;
+            flex-direction: row;
+            input {
+                margin: 0 2em;
+                width: 20px;
+            }
+        }
+
+        .button {
+            #btn {
+    
+                width: 25vw;
+                height: 10vh;
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, 0.685);
+                color: $primary-color;
+                font-weight: bold;
+                font-size: 16px;
+                border-radius: 5px;
+                transition: ease-in-out 300ms;
+    
+                &:hover {
+                    background-color: $primary-color;
+                    color: #fff;
+                }
+    
+            }
+        }
+
+
     }
+
+    
 }

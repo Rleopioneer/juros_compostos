@@ -8,35 +8,47 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <fieldset class="simulador">Simulador
-        <form action="">
+    <form action="" id="form">
+        <div class="firstScreen">
+            <fieldset>
 
-            <div>
-                <label for="name">Nome</label>
-                <input  type="text" name="name" id="name">
-            </div>
+                <h1>Simulador</h1>
     
-            <div> Aportes Mensais:
-                <label for="payment"></label>
-                <input type="number" name="payment" id="payment" placeholder="R$ 00,00">
-            </div>
-    
-            <div> 
-                <label for="time">Quanto tempo o valor ficará aplicado?</label>
-                <input type="number" name="timeValue" id="time" >
-            </div>
-    
-            <div>
-                <input type="radio" name="time" id="time" value="months">Meses
-                <input type="radio" name="time" id="time" value="years">Anos
-            </div>
-            <div class="btn">
-                <button id="simulate" type="submit">Simular</button>
-            </div>
+                <div>
+                    <label for="name">Nome:</label>
+                    <input  type="text" name="name" id="name">
+                </div>
+        
+                <div> 
+                    <label for="payment">Aportes Mensais:</label>
+                    <input type="number" name="payment" id="payment" placeholder="R$ 00,00">
+                </div>
+        
+                <div> 
+                    <label for="timeValue">Quanto tempo o valor ficará aplicado?</label>
+                    <input type="number" name="timeValue" id="timeValue" >
+                </div>
+        
+                <div class="radio">
+                    <input type="radio" name="radio" id="radio" value="months">
+                    <label for="radio">Meses</label>
+                    <input type="radio" name="radio" id="radio" value="years">
+                    <label for="radio">Anos</label>
+                </div>
 
-        </form>
+                <div class="button">
+                    <button id="btn" type="submit">Simular</button>
+                </div>
+    
+                
+            </fieldset>
+        </div>
 
-    </fieldset>
+        <div class="secondScreen">
+            
+        </div>
+
+    </form>
     <script src="js/main.js"></script>
 </body>
 </html>

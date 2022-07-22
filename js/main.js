@@ -27,6 +27,47 @@ Olá [nome], investindo R$[mensalidade] todo mês, você terá R$[resultado da r
 
 console.log("Hello World")
 
+const form = document.querySelector('#form')
 const name = document.querySelector('#name')
+const payment = document.querySelector('#payment')
+const timeValue = document.querySelector('#timeValue')
+const radio = document.querySelectorAll('#time')
+const btn = document.querySelector('#btn')
+const firstScreen = document.querySelector('.firstScreen')
+const secondScreen = document.querySelector('.secondScreen')
 
-console.log(name)
+console.log(secondScreen)
+
+
+
+form.onsubmit = function (e){
+    e.preventDefault()
+
+    console.log(e)
+
+    let hasError = true
+
+    let inputName = document.forms['form']['name']
+    console.log(inputName)
+
+    let inputPayment = document.forms['form']['payment']
+    console.log(inputPayment)
+
+    let inputTimeValue = document.forms['form']['timeValue']
+    console.log(inputTimeValue)
+
+    let radio = document.forms['form']['radio']
+    console.log(radio)
+
+    let btn = document.forms['form']['btn']
+    console.log(btn)
+
+    if (!hasError) {
+        form.submit()
+
+    }
+
+    
+
+}
+
