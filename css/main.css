@@ -10,6 +10,15 @@ body {
   font-size: 16px;
   font-family: "Courier New", Courier, monospace;
 }
+body .error {
+  color: red;
+  margin-top: 0.5em;
+}
+body .formSend {
+  color: rgb(0, 168, 70);
+  margin-top: 0.5em;
+  text-align: center;
+}
 
 .firstScreen {
   margin: 1em;
@@ -58,4 +67,12 @@ body {
 .firstScreen fieldset .button #btn:hover {
   background-color: #de3f53;
   color: #fff;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }/*# sourceMappingURL=main.css.map */

@@ -12,6 +12,18 @@ body {
     color: #fff;
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
+
+    .error {
+        color: red;
+        margin-top: 0.5em;
+    }
+
+    .formSend {
+        color: rgb(0, 168, 70);
+        margin-top: 0.5em;
+        text-align: center;
+    }
+
 }
 
 .firstScreen {
@@ -80,4 +92,12 @@ body {
     }
 
     
+}
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
 }

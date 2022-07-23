@@ -9,43 +9,52 @@
 </head>
 <body>
     <form action="" id="form">
-        <div class="firstScreen">
+        <div class="firstScreen visible">
             <fieldset>
 
                 <h1>Simulador</h1>
     
                 <div>
-                    <label for="name">Nome:</label>
-                    <input  type="text" name="name" id="name">
+                    <label for="name">Nome:
+                        <input  type="text" name="name" id="name">
+                        <span class="error"></span>
+                    </label>
                 </div>
         
                 <div> 
-                    <label for="payment">Aportes Mensais:</label>
-                    <input type="number" name="payment" id="payment" placeholder="R$ 00,00">
+                    <label for="payment">Aportes Mensais:
+                        <input type="number" name="payment" id="payment" placeholder="R$ 00,00">
+                        <span class="error"></span>
+                    </label>
                 </div>
         
                 <div> 
-                    <label for="timeValue">Quanto tempo o valor ficará aplicado?</label>
-                    <input type="number" name="timeValue" id="timeValue" >
+                    <label for="timeValue">Quanto tempo o valor ficará aplicado?
+                        <input type="number" name="timeValue" id="timeValue">
+                        <span class="error"></span>
+                    </label>
                 </div>
         
                 <div class="radio">
-                    <input type="radio" name="radio" id="radio" value="meses">
-                    <label for="radio">Meses</label>
-                    <input type="radio" name="radio" id="radio" value="anos">
-                    <label for="radio">Anos</label>
+                    <label for="radio">
+                        <input type="radio" name="radio" id="radio" value="meses">Meses
+                        
+                        <input type="radio" name="radio" id="radio" value="anos">Anos
+                        <span class="error"></span>
+                    </label>
+                    
                 </div>
 
                 <div class="button">
                     <button id="btn" type="submit">Simular</button>
+                    <span class="formSend"></span>
                 </div>
     
                 
             </fieldset>
         </div>
 
-        <div class="secondScreen">
-            
+        <div class="secondScreen">  
         </div>
 
     </form>
