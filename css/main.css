@@ -5,13 +5,16 @@
 }
 
 body {
+  height: 100vh;
   background-color: rgb(1, 0, 24);
   color: #fff;
   font-size: 16px;
   font-family: "Courier New", Courier, monospace;
+  position: relative;
 }
 body .error {
   color: red;
+  border: red;
   margin-top: 0.5em;
 }
 body .formSend {
@@ -20,42 +23,60 @@ body .formSend {
   text-align: center;
 }
 
-.firstScreen {
-  margin: 1em;
-}
-.firstScreen fieldset {
-  text-align: center;
-  padding: 1em;
+.container {
+  width: 750px;
+  border: 1px solid #de3f53;
   border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.firstScreen fieldset h1 {
+.container .firstScreen {
+  text-align: center;
+}
+.container .firstScreen h1 {
   color: #de3f53;
   font-weight: bold;
+  margin-top: 1em;
 }
-.firstScreen fieldset div {
+.container .firstScreen div {
   padding: 0.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.firstScreen fieldset div input {
+.container .firstScreen div label {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.container .firstScreen div input {
+  color: red;
   margin-top: 1em;
   padding-left: 1em;
-  width: 35vw;
-  height: 5vh;
+  width: 20em;
+  height: 3em;
 }
-.firstScreen fieldset .radio {
+.container .firstScreen .radio {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
-.firstScreen fieldset .radio input {
-  margin: 0 2em;
+.container .firstScreen .radio input {
   width: 20px;
 }
-.firstScreen fieldset .button #btn {
-  width: 25vw;
-  height: 10vh;
+.container .firstScreen .radio input:nth-child(1) {
+  margin: 0 1em 0 0;
+}
+.container .firstScreen .radio input:nth-child(2) {
+  margin: 0 1em 0 1em;
+}
+.container .firstScreen .button #btn {
+  width: 12em;
+  height: 4em;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.685);
   color: #de3f53;
@@ -64,15 +85,19 @@ body .formSend {
   border-radius: 5px;
   transition: ease-in-out 300ms;
 }
-.firstScreen fieldset .button #btn:hover {
+.container .firstScreen .button #btn:hover {
   background-color: #de3f53;
   color: #fff;
 }
-
-.visible {
+.container .visible {
   display: block;
 }
-
-.hidden {
+.container .hidden {
   display: none;
+}
+.container .secondScreen {
+  text-align: center;
+}
+.container .secondScreen h1 {
+  margin: 3em;
 }/*# sourceMappingURL=main.css.map */

@@ -8,13 +8,16 @@ $primary-color: #de3f53;
 $secondary-color: rgb(1, 0, 24);
 
 body {
+    height: 100vh;
     background-color: $secondary-color;
     color: #fff;
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
+    position: relative;
 
     .error {
         color: red;
+        border: red;
         margin-top: 0.5em;
     }
 
@@ -26,18 +29,26 @@ body {
 
 }
 
-.firstScreen {
-    margin: 1em;
-    
 
-    fieldset {
+.container {
+
+    width: 750px;
+    border: 1px solid $primary-color;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    .firstScreen {
+
         text-align: center;
-        padding: 1em; 
-        border-radius: 10px;
+       
         
         h1 {
             color: $primary-color; 
             font-weight: bold;
+            margin-top: 1em;
         }
 
         div {
@@ -46,32 +57,48 @@ body {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+            }
         
             input {
+                color: red;
                 margin-top: 1em;
                 padding-left: 1em;
-                width: 35vw;
-                height: 5vh;
+                width: 20em;
+                height: 3em;
 
             }
 
-
-        }
-
+    
+            }
+    
         .radio {
             display: flex;
             flex-direction: row;
+            align-items: center;
+
             input {
-                margin: 0 2em;
                 width: 20px;
+                &:nth-child(1) {
+                    margin: 0 1em 0 0;                    
+                }
+
+                &:nth-child(2) {
+                    margin: 0 1em 0 1em;
+                }
             }
         }
 
         .button {
             #btn {
     
-                width: 25vw;
-                height: 10vh;
+                width: 12em;
+                height: 4em;
                 cursor: pointer;
                 background-color: rgba(255, 255, 255, 0.685);
                 color: $primary-color;
@@ -87,17 +114,24 @@ body {
     
             }
         }
-
-
+        
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    .hidden {
+        display: none;
     }
 
+    .secondScreen {
+        text-align: center;
+
+        h1 {
+            margin: 3em;
+        }
+
+    }
     
-}
-
-.visible {
-    display: block;
-}
-
-.hidden {
-    display: none;
 }

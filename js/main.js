@@ -23,11 +23,10 @@ form.onsubmit = function (e){
 
     console.log(e)
 
-    let hasError = true
+    let hasError = false
 
-    let inputName = document.forms['form']['name']
-    console.log(inputName.value)
-
+    const inputName = document.forms['form']['name']
+    
     if(!inputName.value) {
         hasError = true
         inputName.classList.add('error')
@@ -35,41 +34,39 @@ form.onsubmit = function (e){
         span.innerText = 'Digite o nome corretamente'
     } else {
         inputName.classList.remove('error')
+        
         let span = inputName.nextSibling.nextSibling
         span.innerText = ''
     }
 
-    let inputPayment = document.forms['form']['payment']
-    console.log(inputPayment.value)
-
+    const inputPayment = document.forms['form']['payment']
+    
     if (!inputPayment.value) {
         hasError = true
         inputPayment.classList.add('error')
         let span = inputPayment.nextSibling.nextSibling
-        span.innerText = 'Digite um E-mail válido'
+        span.innerText = 'Digite um número válido'
     } else {
         inputPayment.classList.remove('error')
         let span = inputPayment.nextSibling.nextSibling
         span.innerText = ''
     }
 
-    let inputTimeValue = document.forms['form']['timeValue']
-    console.log(inputTimeValue.value)
-
+    const inputTimeValue = document.forms['form']['timeValue']
+    
     if (!inputTimeValue.value) {
         hasError = true
         inputTimeValue.classList.add('error')
         let span = inputTimeValue.nextSibling.nextSibling
-        span.innerText = 'Digite um E-mail válido'
+        span.innerText = 'Digite um número válido'
     } else {
         inputTimeValue.classList.remove('error')
         let span = inputTimeValue.nextSibling.nextSibling
         span.innerText = ''
     }
 
-    let radio = document.forms['form']['radio']
-    console.log(radio.value)
-
+    const radio = document.forms['form']['radio']
+    
     if (!radio.value ) {
         hasError = true
         console.log('erro')
@@ -82,37 +79,35 @@ form.onsubmit = function (e){
         span.innerText = ''
     }
 
-    let btn = document.forms['form']['btn']
-   
-    const config = {
-        headers: {
-            "content-type": "application/json"
-        },
-        method: "POST",
-        body: `{"expr": "${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)"}`,
-        
-    }
-    
-    const toJson = (res) => {
-        return res.json()     
-    }
-    
-    const data = (res) => {
-        const result = res.result
-        console.log(result)
-        firstScreen.classList.remove('visible')
-        firstScreen.classList.add('hidden')
-        secondScreen.innerHTML = `<h1>Sua simulação retornou o seguinte valor:${result}</h1>`
-    }
-    
-    const errorHandling = error => console.log(error)
-
-    fetch('http://api.mathjs.org/v4/', config).then(toJson).then(data).catch(errorHandling)
-
-    
-        
-
+    const btn = document.forms['form']['btn']
+ 
     if (!hasError) {
+
+        const toJson = res => res.json()     
+    
+        function constructData (res) {
+            const result = res.result
+            console.log(result)
+            firstScreen.classList.remove('visible')
+            firstScreen.classList.add('hidden')
+            secondScreen.classList.remove('hidden')
+            secondScreen.innerHTML += `<h1>Sua simulação retornou o seguinte valor:${result}</h1>`
+        }
+            
+        const errorHandling = error => console.log(error)
+
+        const config = {
+            headers: {
+                "content-type": "application/json"
+            },
+            method: "POST",
+            body: `{"expr": "${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)"}`,
+            
+        }
+
+        fetch('http://api.mathjs.org/v4/', config).then(toJson).then(constructData).catch(errorHandling)
+
+
 
         form.submit()        
 
