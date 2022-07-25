@@ -13,8 +13,7 @@ body {
   position: relative;
 }
 body .error {
-  color: red;
-  border: red;
+  color: #de3f53;
   margin-top: 0.5em;
 }
 body .formSend {
@@ -24,7 +23,6 @@ body .formSend {
 }
 
 .container {
-  width: 750px;
   border: 1px solid #de3f53;
   border-radius: 10px;
   position: absolute;
@@ -41,7 +39,7 @@ body .formSend {
   margin-top: 1em;
 }
 .container .firstScreen div {
-  padding: 0.5em;
+  padding: 0.5em 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +52,7 @@ body .formSend {
   align-items: center;
 }
 .container .firstScreen div input {
-  color: red;
+  color: #de3f53;
   margin-top: 1em;
   padding-left: 1em;
   width: 20em;
@@ -74,6 +72,9 @@ body .formSend {
 .container .firstScreen .radio input:nth-child(2) {
   margin: 0 1em 0 1em;
 }
+.container .firstScreen .radio span {
+  margin: 0 0 0 0.5em;
+}
 .container .firstScreen .button #btn {
   width: 12em;
   height: 4em;
@@ -83,7 +84,7 @@ body .formSend {
   font-weight: bold;
   font-size: 16px;
   border-radius: 5px;
-  transition: ease-in-out 300ms;
+  transition: ease-in-out 400ms;
 }
 .container .firstScreen .button #btn:hover {
   background-color: #de3f53;
@@ -99,5 +100,21 @@ body .formSend {
   text-align: center;
 }
 .container .secondScreen h1 {
-  margin: 3em;
+  margin: 2em 1em 1em 1em;
+}
+.container .secondScreen .returnButton {
+  width: 12em;
+  height: 4em;
+  margin-bottom: 3em;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.685);
+  color: #de3f53;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: ease-in-out 400ms;
+}
+.container .secondScreen .returnButton:hover {
+  background-color: #de3f53;
+  color: #fff;
 }/*# sourceMappingURL=main.css.map */

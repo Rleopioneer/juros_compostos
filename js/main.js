@@ -52,6 +52,23 @@ form.onsubmit = function (e){
         span.innerText = ''
     }
 
+    const inputInterest = document.forms['form']['interest']
+    const interestValue = parseFloat(inputInterest.value)
+    console.log(interestValue)
+    console.log(interestValue / 100)
+
+    if (!inputInterest.value) {
+        hasError = true
+        inputPayment.classList.add('error')
+        let span = inputInterest.nextSibling.nextSibling
+        span.innerText = 'Digite um número válido'
+    } else {
+        inputInterest.classList.remove('error')
+        let span = inputInterest.nextSibling.nextSibling
+        span.innerText = ''
+    }
+    
+
     const inputTimeValue = document.forms['form']['timeValue']
     
     if (!inputTimeValue.value) {
@@ -79,6 +96,15 @@ form.onsubmit = function (e){
         span.innerText = ''
     }
 
+    const config = {
+        headers: {
+            "content-type": "application/json"
+        },
+        method: "POST",
+        body: `{"expr": "${inputPayment.value} * (((1 + ${interestValue / 100}) ^ ${radio.value === 'anos'? (inputTimeValue.value  * 12): inputTimeValue.value} - 1) / ${interestValue / 100})"}`,
+        
+    }
+
     const btn = document.forms['form']['btn']
  
     if (!hasError) {
@@ -87,27 +113,26 @@ form.onsubmit = function (e){
     
         function constructData (res) {
             const result = res.result
-            console.log(result)
             firstScreen.classList.remove('visible')
             firstScreen.classList.add('hidden')
             secondScreen.classList.remove('hidden')
-            secondScreen.innerHTML += `<h1>Sua simulação retornou o seguinte valor:${result}</h1>`
+            secondScreen.innerHTML = 
+            `<h1>Olá ${inputName.value}, juntando R$${inputPayment.value}.00 todo mês, você terá o valor de R$${parseFloat(result).toFixed(2)} em ${inputTimeValue.value} ${radio.value}</h1>
+
+            <button class="returnButton">Simular Novamente</button>
+            `
+            //atribui função para recarregar a página e fazer uma nova simulação
+            const returnButton = document.querySelector('.returnButton')
+            returnButton.onclick = function(){
+                location.reload(false)
+            }
+        
+            console.log(returnButton)
         }
             
         const errorHandling = error => console.log(error)
 
-        const config = {
-            headers: {
-                "content-type": "application/json"
-            },
-            method: "POST",
-            body: `{"expr": "${inputPayment.value} * (((1 + 0.00517) ^ ${inputTimeValue.value} - 1) / 0.00517)"}`,
-            
-        }
-
         fetch('http://api.mathjs.org/v4/', config).then(toJson).then(constructData).catch(errorHandling)
-
-
 
         form.submit()        
 
