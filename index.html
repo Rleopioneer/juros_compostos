@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Juros compostos</title>
+        <title>Simulador de Investimentos com Juros compostos</title>
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
@@ -38,21 +38,19 @@
                         </label>
                     </div>
             
-                    <div> 
-                        <label for="timeValue">Quanto tempo o valor ficará aplicado?
-                            <input type="number" name="timeValue" id="timeValue">
-                            <span class="error"></span>
-                        </label>
-                    </div>
-            
-                    <div >
-                        <label class="radio" for="radio">
-                            <input type="radio" name="radio" id="radio" value="meses">Meses
-                            
-                            <input type="radio" name="radio" id="radio" value="anos">Anos
-                            <span class="error"></span>
-                        </label>
-                        
+                    <div class="timeline">
+                        <span>Quanto tempo o valor ficará aplicado?</span>  
+                        <div>
+                            <label for="timeValue">
+                                <input type="number" name="timeValue" id="timeValue">
+                            </label>
+    
+                            <label class="radio" for="radio">
+                                <input type="radio" name="radio" id="radio" value="meses">Meses
+                                <input type="radio" name="radio" id="radio" value="anos">Anos
+                            </label>
+                        </div>
+                        <span class="error"></span>
                     </div>
 
                     <div class="button">

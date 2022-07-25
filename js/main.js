@@ -54,9 +54,7 @@ form.onsubmit = function (e){
 
     const inputInterest = document.forms['form']['interest']
     const interestValue = parseFloat(inputInterest.value)
-    console.log(interestValue)
-    console.log(interestValue / 100)
-
+    
     if (!inputInterest.value) {
         hasError = true
         inputPayment.classList.add('error')
@@ -70,29 +68,17 @@ form.onsubmit = function (e){
     
 
     const inputTimeValue = document.forms['form']['timeValue']
-    
-    if (!inputTimeValue.value) {
-        hasError = true
-        inputTimeValue.classList.add('error')
-        let span = inputTimeValue.nextSibling.nextSibling
-        span.innerText = 'Digite um número válido'
-    } else {
-        inputTimeValue.classList.remove('error')
-        let span = inputTimeValue.nextSibling.nextSibling
-        span.innerText = ''
-    }
-
     const radio = document.forms['form']['radio']
-    
-    if (!radio.value ) {
+                
+    if (!radio.value || !inputTimeValue) {
         hasError = true
-        console.log('erro')
-        radio[1].classList.add('error')
-        let span = radio[1].nextSibling.nextSibling
-        span.innerText = 'Selecione uma opção'
+        let span = e.target.childNodes[9].childNodes[5]
+        console.log(span)
+        span.classList.add('error')
+        span.innerText = 'Determine um número e selecione uma opção'
     } else {
-        radio[1].classList.remove('error')
-        let span = radio[1].nextSibling.nextSibling
+        let span = e.target.childNodes[9].childNodes[5]
+        span.classList.remove('error')
         span.innerText = ''
     }
 

@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 
-$primary-color: #de3f53;
-$secondary-color: rgb(1, 0, 24);
+$primary-color: #ff5200;
+$secondary-color: #190564;
 
 body {
     height: 100vh;
@@ -61,6 +61,7 @@ body {
                 flex-direction: column;
                 align-content: center;
                 align-items: center;
+                font-weight: bold;
             }
         
             input {
@@ -73,44 +74,66 @@ body {
             }
     
         }
-    
-        .radio {
+
+        .timeline {
             display: flex;
-            flex-direction: row;
-            align-items: center;
+            flex-direction: column;
 
-            input {
-                width: 20px;
-                &:nth-child(1) {
-                    margin: 0 1em 0 0;                    
-                }
-
-                &:nth-child(2) {
-                    margin: 0 1em 0 1em;
+            div {
+                display: flex;
+                flex-direction: row;
+                
+                label {
+    
+                    input {
+                        width: 5em;
+                        margin: 0 1em 0 0;
+                    }
                 }
             }
 
-            span {
-                margin: 0 0 0 0.5em;
+
+            .radio {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+    
+                input {
+                    width: 20px;
+                    &:nth-child(1) {
+                        margin: 0 1em 0 0;                    
+                    }
+    
+                    &:nth-child(2) {
+                        margin: 0 1em 0 1em;
+                    }
+                }
+    
+                span {
+                    margin: 0 0 0 0.5em;
+                }
             }
         }
+    
+        
 
         .button {
             #btn {
-    
                 width: 12em;
                 height: 4em;
                 cursor: pointer;
-                background-color: rgba(255, 255, 255, 0.685);
-                color: $primary-color;
+                background-color: $primary-color;
+                color: #fff;
                 font-weight: bold;
                 font-size: 16px;
+                border: none;
                 border-radius: 5px;
                 transition: ease-in-out 400ms;
     
                 &:hover {
-                    background-color: $primary-color;
+                    background-color: rgba(255, 0, 0, 0.658);
                     color: #fff;
+                    text-shadow: 1px 1px 1px $secondary-color;
                 }
     
             }
@@ -135,21 +158,22 @@ body {
 
         .returnButton {
 
-                width: 12em;
-                height: 4em;
-                margin-bottom: 3em;
-                cursor: pointer;
-                background-color: rgba(255, 255, 255, 0.685);
-                color: $primary-color;
-                font-weight: bold;
-                font-size: 16px;
-                border-radius: 5px;
-                transition: ease-in-out 400ms;
-    
-                &:hover {
-                    background-color: $primary-color;
-                    color: #fff;
-                }
+            width: 12em;
+            height: 4em;
+            cursor: pointer;
+            background-color: $primary-color;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            transition: ease-in-out 400ms;
+
+            &:hover {
+                background-color: rgba(255, 0, 0, 0.658);
+                color: #fff;
+                text-shadow: 1px 1px 1px $secondary-color;
+            }
 
         }
 

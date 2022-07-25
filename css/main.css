@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  background-color: rgb(1, 0, 24);
+  background-color: #190564;
   color: #fff;
   font-size: 16px;
   font-family: "Courier New", Courier, monospace;
@@ -23,7 +23,7 @@ body .formSend {
 }
 
 .container {
-  border: 1px solid #de3f53;
+  border: 1px solid #ff5200;
   border-radius: 10px;
   position: absolute;
   top: 50%;
@@ -34,7 +34,7 @@ body .formSend {
   text-align: center;
 }
 .container .firstScreen h1 {
-  color: #de3f53;
+  color: #ff5200;
   font-weight: bold;
   margin-top: 1em;
 }
@@ -50,45 +50,60 @@ body .formSend {
   flex-direction: column;
   align-content: center;
   align-items: center;
+  font-weight: bold;
 }
 .container .firstScreen div input {
-  color: #de3f53;
+  color: #ff5200;
   margin-top: 1em;
   padding-left: 1em;
   width: 20em;
   height: 3em;
 }
-.container .firstScreen .radio {
+.container .firstScreen .timeline {
+  display: flex;
+  flex-direction: column;
+}
+.container .firstScreen .timeline div {
+  display: flex;
+  flex-direction: row;
+}
+.container .firstScreen .timeline div label input {
+  width: 5em;
+  margin: 0 1em 0 0;
+}
+.container .firstScreen .timeline .radio {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.container .firstScreen .radio input {
+.container .firstScreen .timeline .radio input {
   width: 20px;
 }
-.container .firstScreen .radio input:nth-child(1) {
+.container .firstScreen .timeline .radio input:nth-child(1) {
   margin: 0 1em 0 0;
 }
-.container .firstScreen .radio input:nth-child(2) {
+.container .firstScreen .timeline .radio input:nth-child(2) {
   margin: 0 1em 0 1em;
 }
-.container .firstScreen .radio span {
+.container .firstScreen .timeline .radio span {
   margin: 0 0 0 0.5em;
 }
 .container .firstScreen .button #btn {
   width: 12em;
   height: 4em;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.685);
-  color: #de3f53;
+  background-color: #ff5200;
+  color: #fff;
   font-weight: bold;
   font-size: 16px;
+  border: none;
   border-radius: 5px;
   transition: ease-in-out 400ms;
 }
 .container .firstScreen .button #btn:hover {
-  background-color: #de3f53;
+  background-color: rgba(255, 0, 0, 0.658);
   color: #fff;
+  text-shadow: 1px 1px 1px #190564;
 }
 .container .visible {
   display: block;
@@ -105,16 +120,17 @@ body .formSend {
 .container .secondScreen .returnButton {
   width: 12em;
   height: 4em;
-  margin-bottom: 3em;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.685);
-  color: #de3f53;
+  background-color: #ff5200;
+  color: #fff;
   font-weight: bold;
   font-size: 16px;
+  border: none;
   border-radius: 5px;
   transition: ease-in-out 400ms;
 }
 .container .secondScreen .returnButton:hover {
-  background-color: #de3f53;
+  background-color: rgba(255, 0, 0, 0.658);
   color: #fff;
+  text-shadow: 1px 1px 1px #190564;
 }/*# sourceMappingURL=main.css.map */
