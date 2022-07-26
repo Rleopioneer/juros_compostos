@@ -80,6 +80,8 @@ body .formSend {
 }
 .container .firstScreen div input {
   color: #ff5200;
+  border-radius: 10px;
+  border: none;
   margin-top: 1em;
   padding-left: 1em;
   width: 20em;
