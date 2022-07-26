@@ -150,12 +150,13 @@ body .formSend {
   position: relative;
 }
 .container .secondScreen h1 {
-  margin: 1em;
+  margin: 2em 1em;
   font-size: 1.5rem;
 }
 .container .secondScreen .returnButton {
   width: 12em;
   height: 4em;
+  margin-top: 3em;
   margin-bottom: 2em;
   cursor: pointer;
   background-color: #ff5200;
