@@ -16,7 +16,7 @@ Criação de aplicação para teste para a vaga de Frontend Developer Júnior. D
 
 ## Screenshot
 
-![](C:\Users\ramon\Workspace\FFSJS\Projetos\Testes\juros_compostos\img\screenshot.png)
+![](img\screenshot.png)
 
 
 
