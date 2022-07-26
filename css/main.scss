@@ -31,6 +31,13 @@ body {
 
 
 .container {
+    width: 300px;
+    border: 1px solid $primary-color;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     .logo {
         padding: 0.3em 0;
@@ -58,18 +65,11 @@ body {
         }
     }
 
-    border: 1px solid $primary-color;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     
     .firstScreen {
 
         text-align: center;
        
-        
         h1 {
             color: $primary-color; 
             font-weight: bold;
@@ -181,9 +181,15 @@ body {
         display: none;
     }
 
+    .loading {
+        background: #1a0564a2;
+    }
+
     .secondScreen {
         text-align: center;
         width: 300px;
+        height: 65vh;
+        position: relative;
 
         h1 {
             margin: 1em;
@@ -211,6 +217,37 @@ body {
 
         }
 
+        .content_spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+           
+            .spinner {
+                
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+                border: 11.5px solid;
+                border-color: rgba(255, 82, 0, 0.38);
+                border-right-color: #ff5200;
+                animation: spinner-loading 1s infinite linear;
+        
+                @keyframes spinner-loading {
+        
+                    to {
+        
+                       transform: rotate(1turn);
+        
+                    }  
+        
+                }     
+                     
+            }
+            
+        }
+
     }
-    
+
+            
 }

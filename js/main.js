@@ -3,11 +3,10 @@
 const form = document.querySelector('#form')
 
 form.onsubmit = function (e){
+    e.preventDefault()
     
     const firstScreen = document.querySelector('.firstScreen')
     const secondScreen = document.querySelector('.secondScreen')
-
-    e.preventDefault()
 
     let hasError = false
 
@@ -52,7 +51,6 @@ form.onsubmit = function (e){
         span.innerText = ''
     }
     
-
     const inputTimeValue = document.forms['form']['timeValue']
     const radio = document.forms['form']['radio']
                 
@@ -67,31 +65,46 @@ form.onsubmit = function (e){
         span.classList.remove('error')
         span.innerText = ''
     }
-
-    /* configurações para realizar Fetch API */
-    const config = {
-        headers: {
-            "content-type": "application/json"
-        },
-        method: "POST",
-        body: `{"expr": "${inputPayment.value} * (((1 + ${interestValue / 100}) ^ ${radio.value === 'anos'? (inputTimeValue.value  * 12): inputTimeValue.value} - 1) / ${interestValue / 100})"}`,
-        
-    }
  
     if (!hasError) {
+
+        const content_spinner = document.querySelector('.content_spinner')
+        const resultDisplay = document.querySelector('.resultDisplay')
+
+        firstScreen.classList.add('hidden')
+        secondScreen.classList.remove('hidden')
+        
+        /* Adiciona animação de loading */
+        setTimeout(function() {
+            console.log('Hello World')
+            content_spinner.classList.add('hidden')
+            resultDisplay.classList.remove('hidden')
+        }, 4000)
+
+        
+        /* Fetch API */
+        const config = {
+            headers: {
+                "content-type": "application/json"
+            },
+            method: "POST",
+            body: `{"expr": "${inputPayment.value} * (((1 + ${interestValue / 100}) ^ ${radio.value === 'anos'? (inputTimeValue.value  * 12): inputTimeValue.value} - 1) / ${interestValue / 100})"}`,
+            
+        }
 
         const toJson = res => res.json()     
     
         function constructData (res) {
             const result = res.result
-            firstScreen.classList.remove('visible')
-            firstScreen.classList.add('hidden')
-            secondScreen.classList.remove('hidden')
-            secondScreen.innerHTML = 
+            
+            
+
+            resultDisplay.innerHTML = 
             `<h1>Olá ${inputName.value}, juntando R$${inputPayment.value}.00 todo mês, você terá o valor de R$${parseFloat(result).toFixed(2)} em ${inputTimeValue.value} ${radio.value}</h1>
 
             <button class="returnButton">Simular Novamente</button>
             `
+            
             //atribui função para recarregar a página e fazer uma nova simulação
             const returnButton = document.querySelector('.returnButton')
             returnButton.onclick = function(){

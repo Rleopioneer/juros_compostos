@@ -23,6 +23,7 @@ body .formSend {
 }
 
 .container {
+  width: 300px;
   border: 1px solid #ff5200;
   border-radius: 10px;
   position: absolute;
@@ -139,9 +140,14 @@ body .formSend {
 .container .hidden {
   display: none;
 }
+.container .loading {
+  background: rgba(26, 5, 100, 0.6352941176);
+}
 .container .secondScreen {
   text-align: center;
   width: 300px;
+  height: 65vh;
+  position: relative;
 }
 .container .secondScreen h1 {
   margin: 1em;
@@ -164,4 +170,30 @@ body .formSend {
   background-color: rgba(255, 0, 0, 0.658);
   color: #fff;
   text-shadow: 1px 1px 1px #190564;
+}
+.container .secondScreen .content_spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+.container .secondScreen .content_spinner .spinner {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 11.5px solid;
+  border-color: rgba(255, 82, 0, 0.38);
+  border-right-color: #ff5200;
+  -webkit-animation: spinner-loading 1s infinite linear;
+          animation: spinner-loading 1s infinite linear;
+}
+@-webkit-keyframes spinner-loading {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes spinner-loading {
+  to {
+    transform: rotate(1turn);
+  }
 }/*# sourceMappingURL=main.css.map */
