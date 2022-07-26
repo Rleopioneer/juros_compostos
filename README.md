@@ -1,101 +1,105 @@
-# teste_landing_page
-Criação de landing page para teste para a vaga de Frontend Developer Júnior. Desenvolvimento de uma página funcional contendo dois formulários e grade de produtos a ser preenchida após consumir uma API. Página desenvolvida de acordo com o layout recebido.
+# teste_juros_compostos
+Criação de aplicação para teste para a vaga de Frontend Developer Júnior. Desenvolvimento de uma página simulando uma aplicação contendo duas telas, a primeiira contendo um campo de formulário para simulalçao de investimento, a segunda contendo o resultado da simulação e um botão para fazer uma nova simulação. Simulação calculada por meio de uma requisição POST para a API.
 
 ## Conteúdo
 
 - Visão Geral
-  - [Links](https://github.com/Rleopioneer/teste_landing_page/blob/master/README.md#links)
+  - Screenshot
+  - [Links](https://github.com/Rleopioneer/teste_juros_compostos/blob/master/README.md#links)
 - Meu Processo
-  - [Desenvolvido com](https://github.com/Rleopioneer/teste_landing_page/blob/master/README.md#built-with)
-  - [O que aprendi](https://github.com/Rleopioneer/teste_landing_page/blob/master/README.md#what-i-learned)
-  - [Recursos Úteis](https://github.com/Rleopioneer/teste_landing_page/blob/master/README.md#useful-resources)
-- [Autor](https://github.com/Rleopioneer/teste_landing_page/blob/master/README.md#author)
+  - [Desenvolvido com](https://github.com/Rleopioneer/teste_juros_compostos/blob/master/README.md#built-with)
+  - [O que aprendi](https://github.com/Rleopioneer/teste_juros_compostos/master/README.md#what-i-learned)
+  - [Recursos Úteis](https://github.com/Rleopioneer/teste_juros_compostos/master/README.md#useful-resources)
+- [Autor](https://github.com/Rleopioneer/teste_juros_compostos/master/README.md#author)
 
-## [Links](https://github.com/Rleopioneer/teste_landing_page/blob/master/README.md#links)
 
-- Live Preview: [GitHub Pages](https://rleopioneer.github.io/teste_landing_page/)
+
+## Screenshot
+
+![](C:\Users\ramon\Workspace\FFSJS\Projetos\Testes\juros_compostos\img\screenshot.png)
+
+
+
+## [Links](https://github.com/Rleopioneer/teste_juros_compostos/blob/master/README.md#links)
+
+- Live Preview: [GitHub Pages]([Simule seus Investimentos aqui! (rleopioneer.github.io)](https://rleopioneer.github.io/juros_compostos/))
+- 
 
 ## Meu Processo
 
 ### Desenvolvido com
 
+- JavaScript
 - HTML5
 - CSS3
 - SASS
-- JavaScript
 
 ### O que aprendi
 
 Página desenvolvida de acordo com as instruções do teste. 
 
-Utilizei a propriedade *clip-path* para fazer o design do *header*.
+Validação do formulário:
 
-```scss
-.header {
-    height: 30em;
-    background-color: $primary-color;
-    color: #fff ;
-    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 75%);
+```javascript
+form.onsubmit = function (e){
+
+    e.preventDefault()
 ```
 
 
 
-As variáveis que armazenam os elementos foram armazenadas dentro de um objeto, poluindo menos o escopo global do documento:
+Verificação da quantidade de tempo desejada pelo usuário e se o valor se refere ao período de meses ou anos:
 
 ```javascript
-const obj= {
-    form: document.querySelector('#form'),
-
-    enviar: document.querySelector('#enviar'),
-
-    boxes: document.querySelector('#boxes'),
-
-    newPage: document.querySelector('#newPage'),
-
-    btnNewPage: document.querySelector('#btnNewPage'),
-
-    formShare: document.querySelector('#formShare')
-}
-```
-
-Validação dos campos de E-mail e CPF do formulário com regex:
-
-```javascript
-let inputEmail = document.forms['form']['email']
-    let emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-
-    if (!inputEmail.value || !inputEmail.value.match(emailValidation)) {
+const inputTimeValue = document.forms['form']['timeValue']
+    const radio = document.forms['form']['radio']
+                
+    if (!radio.value || !inputTimeValue) {
         hasError = true
-        inputEmail.classList.add('error')
-        let span = inputEmail.nextSibling.nextSibling
-        span.innerText = 'Digite um E-mail válido'
+        let span = e.target.childNodes[9].childNodes[5]
+        console.log(span)
+        span.classList.add('error')
+        span.innerText = 'Determine um número e selecione uma opção'
     } else {
-        inputEmail.classList.remove('error')
-        let span = inputEmail.nextSibling.nextSibling
-        span.innerText = ''
-    }
-
-    let inputCpf = document.forms['form']['cpf']
-    let cpfValidation = /^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/
-         
-    if (!inputCpf.value || !inputCpf.value.match(cpfValidation)) {
-        hasError = true
-        inputCpf.classList.add('error')
-        let span = inputCpf.nextSibling.nextSibling
-        span.innerText = 'Digite um CPF Válido'
-    }  else {
-        inputCpf.classList.remove('error')
-        let span = inputCpf.nextSibling.nextSibling
+        let span = e.target.childNodes[9].childNodes[5]
+        span.classList.remove('error')
         span.innerText = ''
     }
 ```
 
-API Request é realizada após a validação do formulário:
+Configurações a serem passadas na requisição, campo body preenchido usando template string, fazendo uma verificação usando if ternário para calcular o período de tempo dependendo da escolha do usuário e tranformando o valor da taxa de juros em número decimal:
 
-```js
-    if (!temErro) {
-        fetch('https://frontend-intern-challenge-api.iurykrieger.vercel.app/products?	page=1').then(toJson).then(buildProductBoxes).catch(errorMsg)
-        form.submit()
+```javascript
+const config = {
+        headers: {
+            "content-type": "application/json"
+        },
+        method: "POST",
+        body: `{"expr": "${inputPayment.value} * (((1 + ${interestValue / 100}) ^ ${radio.value === 'anos'? (inputTimeValue.value  * 12): inputTimeValue.value} - 1) / ${interestValue / 100})"}`,
+        
+    }
+```
+
+Obtenção da resposta da requisição e construção da segunda tela e função para recarregar nova página atribuída ao botão:
+
+```javascript
+   function constructData (res) {
+            const result = res.result
+            firstScreen.classList.remove('visible')
+            firstScreen.classList.add('hidden')
+            secondScreen.classList.remove('hidden')
+            secondScreen.innerHTML = 
+            `<h1>Olá ${inputName.value}, juntando R$${inputPayment.value}.00 todo mês, você terá o valor de R$${parseFloat(result).toFixed(2)} em ${inputTimeValue.value} ${radio.value}</h1>
+
+            <button class="returnButton">Simular Novamente</button>
+            `
+            //atribui função para recarregar a página e fazer uma nova simulação
+            const returnButton = document.querySelector('.returnButton')
+            returnButton.onclick = function(){
+                location.reload(false)
+            }
+        
+        }
 ```
 
 
