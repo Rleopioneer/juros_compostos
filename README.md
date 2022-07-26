@@ -16,7 +16,7 @@ Criação de aplicação para teste para a vaga de Frontend Developer Júnior. D
 
 ## Screenshot
 
-![](img\screenshot.png)
+![](https://github.com/Rleopioneer/juros_compostos/blob/86b65cd78860d2ddde7d5ecb4a95db8f8f0eed89/img/screenshot.png)
 
 
 
