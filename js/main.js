@@ -1,11 +1,11 @@
-/************************** Juros Compostos *****************************/
+/*************** Juros Compostos **************/
 
 const form = document.querySelector('#form')
-const firstScreen = document.querySelector('.firstScreen')
-const secondScreen = document.querySelector('.secondScreen')
-
 
 form.onsubmit = function (e){
+    
+    const firstScreen = document.querySelector('.firstScreen')
+    const secondScreen = document.querySelector('.secondScreen')
 
     e.preventDefault()
 
@@ -109,4 +109,3 @@ form.onsubmit = function (e){
     }
 
 }
-
