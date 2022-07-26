@@ -36,7 +36,19 @@ Criação de aplicação para teste para a vaga de Frontend Developer Júnior. D
 
 ### O que aprendi
 
-Página desenvolvida de acordo com as instruções do teste. 
+Página desenvolvida de acordo com as instruções do teste.
+
+Adiciona animação de carregamento após o envio do formulário com setTimeout:
+
+ 
+
+```javascript
+setTimeout(function() {
+            console.log('Hello World')
+            content_spinner.classList.add('hidden')
+            resultDisplay.classList.remove('hidden')
+        }, 4000)
+```
 
 Validação do formulário:
 
