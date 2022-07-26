@@ -76,9 +76,10 @@ form.onsubmit = function (e){
         
         /* Adiciona animação de loading */
         setTimeout(function() {
-            console.log('Hello World')
+            
             content_spinner.classList.add('hidden')
             resultDisplay.classList.remove('hidden')
+            
         }, 4000)
 
         
@@ -115,7 +116,7 @@ form.onsubmit = function (e){
             
         const errorHandling = error => console.log(error)
 
-        fetch('http://api.mathjs.org/v4/', config).then(toJson).then(constructData).catch(errorHandling)
+        fetch('https://api.mathjs.org/v4/', config).then(toJson).then(constructData).catch(errorHandling)
 
         form.submit()        
 
