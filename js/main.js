@@ -1,17 +1,4 @@
-/* Construa uma aplicação que fará uma simulação de investimento utilizando juros compostos. A aplicação terá duas telas:
-
-Primeira tela
-A primeira tela deve ter um formulário com os campos: nome, mensalidade, taxa de juros, tempo de contribuição e um botão simular.
-
-O body da request deverá ser:
-{ "expr": "20 * (((1 + 0.00517) ^ 24 - 1) / 0.00517)" }
-
-Segunda tela
-A segunda tela deverá exibir um texto com as informaçoes dos campos de nome, mensalidade, tempo e o resultado da request.
-
-Exemplo:
-
-Olá [nome], investindo R$[mensalidade] todo mês, você terá R$[resultado da request] em [tempo] sob uma taxa de juros de [taxa] ao mês. */
+/************************** Juros Compostos *****************************/
 
 const form = document.querySelector('#form')
 const firstScreen = document.querySelector('.firstScreen')
@@ -19,9 +6,8 @@ const secondScreen = document.querySelector('.secondScreen')
 
 
 form.onsubmit = function (e){
-    e.preventDefault()
 
-    console.log(e)
+    e.preventDefault()
 
     let hasError = false
 
@@ -82,6 +68,7 @@ form.onsubmit = function (e){
         span.innerText = ''
     }
 
+    /* configurações para realizar Fetch API */
     const config = {
         headers: {
             "content-type": "application/json"
@@ -90,8 +77,6 @@ form.onsubmit = function (e){
         body: `{"expr": "${inputPayment.value} * (((1 + ${interestValue / 100}) ^ ${radio.value === 'anos'? (inputTimeValue.value  * 12): inputTimeValue.value} - 1) / ${interestValue / 100})"}`,
         
     }
-
-    const btn = document.forms['form']['btn']
  
     if (!hasError) {
 
@@ -113,7 +98,6 @@ form.onsubmit = function (e){
                 location.reload(false)
             }
         
-            console.log(returnButton)
         }
             
         const errorHandling = error => console.log(error)
