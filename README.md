@@ -58,7 +58,41 @@ form.onsubmit = function (e){
     e.preventDefault()
 ```
 
+Validação dos campos de taxa de juros e aportes mensais e convertendo os valores em numero:
 
+```javascript
+const inputInterest = document.forms['form']['interest']
+    const interestToNumber = parseFloat(inputInterest.value.replace(',', '.'))
+    
+    const validation = /[^\d,]+/g
+    
+    
+    if (!inputInterest.value || inputInterest.value.match(validation)) {
+        hasError = true
+        inputInterest.classList.add('error')
+        let span = inputInterest.nextSibling.nextSibling
+        span.innerText = 'Digite um número válido e sem %'
+    } else {
+        inputInterest.classList.remove('error')
+        let span = inputInterest.nextSibling.nextSibling
+        span.innerText = ''
+    }
+
+    const inputPayment = document.forms['form']['payment']
+    const paymentToNumber = parseFloat(inputPayment.value.replace(',', '.'))
+
+    
+    if (!inputPayment.value || inputPayment.value.match(validation)) {
+        hasError = true
+        inputPayment.classList.add('error')
+        let span = inputPayment.nextSibling.nextSibling
+        span.innerText = 'Digite um número válido'
+    } else {
+        inputPayment.classList.remove('error')
+        let span = inputPayment.nextSibling.nextSibling
+        span.innerText = ''
+    }
+```
 
 Verificação da quantidade de tempo desejada pelo usuário e se o valor se refere ao período de meses ou anos:
 

@@ -43,7 +43,7 @@ form.onsubmit = function (e){
 
     const inputPayment = document.forms['form']['payment']
     const paymentToNumber = parseFloat(inputPayment.value.replace(',', '.'))
-    console.log(paymentToNumber)
+
     
     if (!inputPayment.value || inputPayment.value.match(validation)) {
         hasError = true
