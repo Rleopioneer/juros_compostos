@@ -30,14 +30,14 @@
             
                     <div> 
                         <label for="interest">Taxa de Juros:
-                            <input type="number" step="0.001" name="interest" id="interest" placeholder="0.00%">
+                            <input type="text" step="0.001" name="interest" id="interest" placeholder="0.00%">
                             <span class="error"></span>
                         </label>
                     </div>
 
                     <div> 
                         <label for="payment">Aportes Mensais:
-                            <input type="number" name="payment" id="payment" placeholder="R$ 00,00">
+                            <input type="text" name="payment" id="payment" placeholder="R$ 00,00">
                             <span class="error"></span>
                         </label>
                     </div>
@@ -48,10 +48,12 @@
                             <label for="timeValue">
                                 <input type="number" name="timeValue" id="timeValue">
                             </label>
-    
-                            <label class="radio" for="radio">
-                                <input type="radio" name="radio" id="radio" value="meses">Meses
-                                <input type="radio" name="radio" id="radio" value="anos">Anos
+                            
+                            <label class="month" for="monthOrYear">Meses
+                                <input type="radio" name="monthOrYear" id="radio" value="meses">
+                            </label>
+                            <label class="month" for="monthOrYear">Anos
+                                <input type="radio" name="monthOrYear" id="radio" value="anos">
                             </label>
                         </div>
                         <span class="error"></span>

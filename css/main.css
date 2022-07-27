@@ -98,24 +98,23 @@ body .formSend {
 }
 .container .firstScreen .timeline div label input {
   width: 5em;
-  margin: 0 1em 0 0;
+  margin: 0 0.5em 0 0;
 }
-.container .firstScreen .timeline .radio {
+.container .firstScreen .timeline .month {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  margin: 0 0.5em;
 }
-.container .firstScreen .timeline .radio input {
+.container .firstScreen .timeline .month input {
   width: 20px;
+  margin: 0.5em 0;
 }
-.container .firstScreen .timeline .radio input:nth-child(1) {
-  margin: 0 1em 0 0;
-}
-.container .firstScreen .timeline .radio input:nth-child(2) {
-  margin: 0 1em 0 1em;
-}
-.container .firstScreen .timeline .radio span {
+.container .firstScreen .timeline .month span {
   margin: 0 0 0 0.5em;
+}
+.container .firstScreen .button {
+  padding: 0 1em;
 }
 .container .firstScreen .button #btn {
   width: 12em;

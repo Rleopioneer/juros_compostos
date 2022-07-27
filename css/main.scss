@@ -119,37 +119,38 @@ body {
     
                     input {
                         width: 5em;
-                        margin: 0 1em 0 0;
+                        margin: 0 0.5em 0 0;
                     }
                 }
             }
 
-
-            .radio {
+            
+            .month {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: center;
-    
+                margin: 0 0.5em;
+                
+
                 input {
                     width: 20px;
-                    &:nth-child(1) {
-                        margin: 0 1em 0 0;                    
-                    }
-    
-                    &:nth-child(2) {
-                        margin: 0 1em 0 1em;
-                    }
+                    margin: 0.5em 0;
+
                 }
     
                 span {
                     margin: 0 0 0 0.5em;
                 }
             }
+
+            
         }
     
         
 
         .button {
+            padding: 0 1em;
+
             #btn {
                 width: 12em;
                 height: 4em;
