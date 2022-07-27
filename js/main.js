@@ -26,14 +26,15 @@ form.onsubmit = function (e){
 
     const inputInterest = document.forms['form']['interest']
     const interestToNumber = parseFloat(inputInterest.value.replace(',', '.'))
-    console.log(interestToNumber)
+    
+    const validation = /[^\d,]+/g
     
     
-    if (!inputInterest.value) {
+    if (!inputInterest.value || inputInterest.value.match(validation)) {
         hasError = true
         inputInterest.classList.add('error')
         let span = inputInterest.nextSibling.nextSibling
-        span.innerText = 'Digite um número válido'
+        span.innerText = 'Digite um número válido e sem %'
     } else {
         inputInterest.classList.remove('error')
         let span = inputInterest.nextSibling.nextSibling
@@ -44,7 +45,7 @@ form.onsubmit = function (e){
     const paymentToNumber = parseFloat(inputPayment.value.replace(',', '.'))
     console.log(paymentToNumber)
     
-    if (!inputPayment.value) {
+    if (!inputPayment.value || inputPayment.value.match(validation)) {
         hasError = true
         inputPayment.classList.add('error')
         let span = inputPayment.nextSibling.nextSibling
@@ -62,7 +63,6 @@ form.onsubmit = function (e){
     if (!radio.value || !inputTimeValue) {
         hasError = true
         let span = e.target.childNodes[9].childNodes[5]
-        console.log(span)
         span.classList.add('error')
         span.innerText = 'Determine um número e selecione uma opção'
     } else {
