@@ -24,7 +24,25 @@ form.onsubmit = function (e){
         span.innerText = ''
     }
 
+    const inputInterest = document.forms['form']['interest']
+    const interestToNumber = parseFloat(inputInterest.value.replace(',', '.'))
+    console.log(interestToNumber)
+    
+    
+    if (!inputInterest.value) {
+        hasError = true
+        inputInterest.classList.add('error')
+        let span = inputInterest.nextSibling.nextSibling
+        span.innerText = 'Digite um número válido'
+    } else {
+        inputInterest.classList.remove('error')
+        let span = inputInterest.nextSibling.nextSibling
+        span.innerText = ''
+    }
+
     const inputPayment = document.forms['form']['payment']
+    const paymentToNumber = parseFloat(inputPayment.value.replace(',', '.'))
+    console.log(paymentToNumber)
     
     if (!inputPayment.value) {
         hasError = true
@@ -36,23 +54,10 @@ form.onsubmit = function (e){
         let span = inputPayment.nextSibling.nextSibling
         span.innerText = ''
     }
-
-    const inputInterest = document.forms['form']['interest']
-    const interestValue = parseFloat(inputInterest.value)
-    
-    if (!inputInterest.value) {
-        hasError = true
-        inputPayment.classList.add('error')
-        let span = inputInterest.nextSibling.nextSibling
-        span.innerText = 'Digite um número válido'
-    } else {
-        inputInterest.classList.remove('error')
-        let span = inputInterest.nextSibling.nextSibling
-        span.innerText = ''
-    }
     
     const inputTimeValue = document.forms['form']['timeValue']
     const radio = document.forms['form']['radio']
+
                 
     if (!radio.value || !inputTimeValue) {
         hasError = true
@@ -89,7 +94,7 @@ form.onsubmit = function (e){
                 "content-type": "application/json"
             },
             method: "POST",
-            body: `{"expr": "${inputPayment.value} * (((1 + ${interestValue / 100}) ^ ${radio.value === 'anos'? (inputTimeValue.value  * 12): inputTimeValue.value} - 1) / ${interestValue / 100})"}`,
+            body: `{"expr": "${paymentToNumber} * (((1 + ${interestToNumber / 100}) ^ ${radio.value === 'anos'? (inputTimeValue.value  * 12): inputTimeValue.value} - 1) / ${interestToNumber / 100})"}`,
             
         }
 
@@ -101,7 +106,7 @@ form.onsubmit = function (e){
             
 
             resultDisplay.innerHTML = 
-            `<h1>Olá ${inputName.value}, juntando R$${inputPayment.value}.00 todo mês, você terá o valor de R$${parseFloat(result).toFixed(2)} em ${inputTimeValue.value} ${radio.value}</h1>
+            `<h1>Olá ${inputName.value}, juntando R$${inputPayment.value} todo mês, você terá o valor de R$${parseFloat(result).toFixed(2).replace('.', ',')} em ${inputTimeValue.value} ${radio.value}</h1>
 
             <button class="returnButton">Simular Novamente</button>
             `
